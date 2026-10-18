@@ -1,25 +1,21 @@
 import Button from "./Button";
-
-const Navigation = ({ vistaActiva, onCambiarVista }) => {
+export default function Navigation({ vistaActiva, onCambiarVista, disabled }) {
   return (
-    <nav style={{ display: "flex", justifyContent: "center", gap: "12px", marginBottom: "20px" }}>
-      <Button
-        label="📊 Resumen"
-        onClick={() => onCambiarVista("resumen")}
-        variant={vistaActiva === "resumen" ? "primary" : "secondary"}
-      />
-      <Button
-        label="📋 Tareas"
-        onClick={() => onCambiarVista("tareas")}
-        variant={vistaActiva === "tareas" ? "primary" : "secondary"}
-      />
-      <Button
-        label="➕ Nueva Tarea"
-        onClick={() => onCambiarVista("nueva")}
-        variant={vistaActiva === "nueva" ? "primary" : "secondary"}
-      />
+    <nav className="navigation" aria-label="Vistas">
+      {[
+        ["resumen", "Resumen"],
+        ["tareas", "Tareas"],
+        ["nueva", "Nueva tarea"],
+      ].map(([vista, texto]) => (
+        <Button
+          key={vista}
+          label={texto}
+          onClick={() => onCambiarVista(vista)}
+          disabled={disabled}
+          current={vistaActiva === vista}
+          variant={vistaActiva === vista ? "primary" : "secondary"}
+        />
+      ))}
     </nav>
   );
-};
-
-export default Navigation;
+}

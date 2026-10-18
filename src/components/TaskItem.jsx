@@ -1,74 +1,89 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Button from "./Button";
 import Badge from "./Badge";
 
-const TaskItem = ({
+export default function TaskItem({
   tarea,
   handleCompletar,
   onEliminar,
   onEditarTitulo,
   guardando,
-}) => {
+}) {
   const [editando, setEditando] = useState(false);
   const [nuevoTitulo, setNuevoTitulo] = useState(tarea.titulo);
-
-  const guardarEdicion = () => {
-    if (nuevoTitulo.trim() !== "" && nuevoTitulo !== tarea.titulo) {
-      onEditarTitulo(tarea.id, nuevoTitulo.trim());
-    } else {
-      setNuevoTitulo(tarea.titulo);
+  const [error, setError] = useState("");
+  const enviando = useRef(false);
+  const cancelar = useRef(false);
+  const guardar = async () => {
+    if (cancelar.current || enviando.current || guardando) return;
+    const titulo = nuevoTitulo.trim();
+    if (!titulo) {
+      setError("El título no puede estar vacío.");
+      return;
     }
-    setEditando(false);
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      guardarEdicion();
-    } else if (e.key === "Escape") {
-      setNuevoTitulo(tarea.titulo);
+    setError("");
+    if (titulo === tarea.titulo) {
       setEditando(false);
+      return;
     }
+    enviando.current = true;
+    const ok = await onEditarTitulo(tarea.id, titulo);
+    enviando.current = false;
+    if (ok) setEditando(false);
   };
-
+  const iniciar = () => {
+    if (guardando) return;
+    cancelar.current = false;
+    setNuevoTitulo(tarea.titulo);
+    setError("");
+    setEditando(true);
+  };
   return (
     <li className="task-item">
-      {/* ZONA IZQUIERDA: Badge + Título editable en doble clic */}
-      <div style={{ display: "flex", alignItems: "center", gap: "10px", flex: 1 }}>
+      <div className="task-content">
         <Badge texto={tarea.completada ? "completada" : "pendiente"} />
-
         {editando ? (
-          <input
-            type="text"
-            value={nuevoTitulo}
-            onChange={(e) => setNuevoTitulo(e.target.value)}
-            onBlur={guardarEdicion}
-            onKeyDown={handleKeyDown}
-            autoFocus
-            className="task-input"
-            style={{ padding: "4px 8px" }}
-          />
+          <div className="task-edit">
+            <input
+              aria-label="Editar título"
+              value={nuevoTitulo}
+              onChange={(e) => setNuevoTitulo(e.target.value)}
+              onBlur={guardar}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  guardar();
+                }
+                if (e.key === "Escape") {
+                  cancelar.current = true;
+                  setEditando(false);
+                  setError("");
+                }
+              }}
+              autoFocus
+              disabled={guardando}
+              className="task-input"
+            />
+            {error && (
+              <p role="alert" className="form-error">
+                {error}
+              </p>
+            )}
+          </div>
         ) : (
           <span
-            onDoubleClick={() => setEditando(true)}
-            title="Doble clic para editar el título"
-            style={{
-              textDecoration: tarea.completada ? "line-through" : "none",
-              color: tarea.completada ? "#94a3b8" : "inherit",
-              cursor: "pointer",
-              userSelect: "none",
-            }}
+            onDoubleClick={iniciar}
+            title="Doble clic para editar"
+            className={`task-title ${tarea.completada ? "task-completed" : "task-pending"}`}
           >
             {tarea.titulo}
           </span>
         )}
       </div>
-
-      {/* ZONA DERECHA: Botones */}
-      <div style={{ display: "flex", gap: "8px", flexShrink: 0 }}>
+      <div className="task-actions">
         <Button
           label={tarea.completada ? "Desmarcar" : "Completar"}
           onClick={() => handleCompletar(tarea.id, tarea.completada)}
-          variant={tarea.completada ? "success" : "primary"}
           disabled={guardando}
         />
         <Button
@@ -80,6 +95,4 @@ const TaskItem = ({
       </div>
     </li>
   );
-};
-
-export default TaskItem;
+}

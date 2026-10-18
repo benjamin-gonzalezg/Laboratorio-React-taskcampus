@@ -4,7 +4,7 @@ Aplicación para gestionar tareas académicas, hecha con React, JavaScript y Vit
 
 ## Integrantes
 
-- Benjamín Nicolás González Gatica
+- Benjamín González
 - Damon Murray
 - Matías Palma
 - Benjamín Juanillo

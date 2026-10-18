@@ -1,21 +1,42 @@
-const Modal = ({ visible, mensaje, onConfirmar, onCancelar }) => {
+import Button from "./Button";
+export default function Modal({
+  visible,
+  mensaje,
+  onConfirmar,
+  onCancelar,
+  guardando = false,
+  error,
+}) {
   if (!visible) return null;
-
   return (
     <div className="modal-overlay">
-      <div className="modal-box">
+      <div
+        className="modal-box"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Confirmar eliminación"
+      >
         <p>{mensaje}</p>
+        {error && (
+          <p role="alert" className="form-error">
+            {error}
+          </p>
+        )}
         <div className="modal-acciones">
-          <button className="btn btn-danger" onClick={onConfirmar}>
-            Confirmar
-          </button>
-          <button className="btn btn-secondary" onClick={onCancelar}>
-            Cancelar
-          </button>
+          <Button
+            label={guardando ? "Eliminando..." : "Confirmar"}
+            variant="danger"
+            onClick={onConfirmar}
+            disabled={guardando}
+          />
+          <Button
+            label="Cancelar"
+            variant="secondary"
+            onClick={onCancelar}
+            disabled={guardando}
+          />
         </div>
       </div>
     </div>
   );
-};
-
-export default Modal;
+}
