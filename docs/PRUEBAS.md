@@ -77,14 +77,14 @@ después de recargar.
 
 ## Comprobación manual en navegador
 
-Estos casos siguen pendientes. Se debe reemplazar el resultado
-obtenido después de ejecutar cada caso y registrar lo observado.
+Estas comprobaciones se realizaron manualmente en el navegador.
+Los resultados observados se registran en la siguiente tabla.
 
-| Caso probado                   | Pasos                                                                                                                              | Resultado esperado                                                                         | Resultado obtenido | Evidencia asociada                            |
-| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------ | --------------------------------------------- |
-| Presentación                   | Ejecutar npm run dev y abrir las tres vistas en escritorio y con una ventana angosta.                                              | Textos y controles legibles, vista activa reconocible y contenido utilizable.              | Pendiente.         | Registrar observaciones; capturas opcionales. |
-| API real desde la aplicación   | Abrir las herramientas del navegador, sección Network. Recargar, crear una tarea y editar, completar y eliminar tareas originales. | Observar GET, POST, PATCH y DELETE. La interfaz debe reflejar las operaciones exitosas.    | Pendiente.         | Registrar peticiones y resultados observados. |
-| Persistencia durante la sesión | Crear una tarea, cambiar de vista y volver. Luego recargar la página.                                                              | La tarea se conserva al navegar. Al recargar se recuperan las tareas originales de la API. | Pendiente.         | Registrar el resultado observado.             |
+| Caso probado                   | Pasos                                                                                                                              | Resultado esperado                                                                         | Resultado obtenido | Evidencia asociada                                                                                                                                         |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Presentación                   | Ejecutar npm run dev y abrir las tres vistas en escritorio y con una ventana angosta.                                              | Textos y controles legibles, vista activa reconocible y contenido utilizable.              | Aprobado           | Las tres vistas se muestran correctamente y los controles son utilizables en una ventana amplia y angosta.                                                 |
+| API real desde la aplicación   | Abrir las herramientas del navegador, sección Network. Recargar, crear una tarea y editar, completar y eliminar tareas originales. | Observar GET, POST, PATCH y DELETE. La interfaz debe reflejar las operaciones exitosas.    | Aprobado           | Se verificaron GET 200, POST 201, PATCH 200 y DELETE 200 desde la aplicación. La interfaz reflejó los cambios y cancelar la eliminación conservó la tarea. |
+| Persistencia durante la sesión | Crear una tarea, cambiar de vista y volver. Luego recargar la página.                                                              | La tarea se conserva al navegar. Al recargar se recuperan las tareas originales de la API. | Aprobado           | Las tareas, el filtro y la búsqueda se conservaron al cambiar de vista. Al recargar se recuperaron las diez tareas originales de la API.                   |
 
 Para iniciar la aplicación:
 

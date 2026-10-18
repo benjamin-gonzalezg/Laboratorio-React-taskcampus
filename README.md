@@ -13,7 +13,8 @@ Aplicación para gestionar tareas académicas, hecha con React, JavaScript y Vit
 
 ## Instalación y ejecución
 
-Entorno usado para verificar esta versión: Node.js v24.19.0 y npm 11.9.0.
+Entorno utilizado para la verificación local: Windows, Node.js v24.11.0 y npm 11.6.1.
+Las advertencias de dependencias y los resultados están documentados en docs/PRUEBAS.md.
 Usar Node.js 24.x. Node 18 no sirve para las versiones actuales de las herramientas del proyecto.
 
 ```bash
@@ -55,7 +56,7 @@ npm test
 
 - **Resumen:** total, pendientes, completadas y cantidad que coincide con el filtro y la búsqueda.
 - **Tareas:** listado, filtro por estado y búsqueda por título. Doble clic en un título para editarlo; Enter o perder el foco guardan. Escape cancela la edición. Eliminar abre una confirmación.
-- **Nueva tarea:** formulario controlado. No admite títulos vacíos o con espacios. Confirma la creación solo si el POST resulta exitoso.
+- **Nueva tarea:** formulario controlado. No admite títulos vacíos ni compuestos únicamente por espacios. Confirma la creación solo si el POST resulta exitoso.
 
 El encabezado y la navegación permanecen disponibles. Se identifica la vista activa. Las tareas, el filtro y la búsqueda se conservan al cambiar de vista. Mientras se guarda, se bloquean las operaciones y el cambio de vista para evitar envíos simultáneos. Un error de operación muestra un mensaje, pero no oculta las vistas ni borra tareas.
 
@@ -119,4 +120,4 @@ La identidad de una fila en React y la de un recurso remoto cumplen funciones di
 
 El registro de casos, pasos, resultados y evidencias está en [docs/PRUEBAS.md](docs/PRUEBAS.md).
 
-Antes de entregar, completar los integrantes y realizar la comprobación visual y de API real indicada allí. El repositorio debe ser público. En Canvas se entrega un único archivo `.txt` con los nombres completos de todos y la URL del repositorio. No se exige exposición ni adjuntar los tutoriales resueltos.
+Las verificaciones automáticas y manuales están registradas en docs/PRUEBAS.md. La entrega en Canvas consiste en un único archivo .txt con los nombres completos de todos los integrantes y el enlace al repositorio público.
