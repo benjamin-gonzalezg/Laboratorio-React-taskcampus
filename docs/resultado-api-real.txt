@@ -1,0 +1,6 @@
+Comprobación HTTP del servicio real durante la preparación:
+GET /todos?_limit=10 -> 200, 10 tareas
+POST /todos -> 201, id devuelto: 201
+PATCH /todos/1 con completed: true -> 200, completed: true
+DELETE /todos/2 -> 200, {}
+Las escrituras son simuladas por JSONPlaceholder. Esta comprobación no es una prueba visual del navegador.

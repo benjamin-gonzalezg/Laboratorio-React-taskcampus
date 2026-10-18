@@ -1,0 +1,14 @@
+Verificación local: 18 de octubre de 2026
+Sistema: Windows
+Node.js: v24.11.0
+npm: 11.6.1
+
+Comando: npm test
+
+Resultado:
+Test Files: 1 passed (1)
+Tests: 12 passed (12)
+Duration: 9.83s
+
+Las 12 pruebas automáticas finalizaron correctamente.
+Las peticiones HTTP de estas pruebas usan respuestas controladas.

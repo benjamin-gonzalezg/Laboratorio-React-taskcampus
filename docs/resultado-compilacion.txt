@@ -1,0 +1,21 @@
+Verificación local: 18 de octubre de 2026
+Sistema: Windows
+Node.js: v24.11.0
+npm: 11.6.1
+
+Comando: npm ci
+Resultado: instalación completada.
+233 paquetes agregados y 234 paquetes auditados.
+0 vulnerabilidades detectadas.
+
+Se mostraron advertencias EBADENGINE porque algunas dependencias
+requieren una versión de Node superior a la utilizada.
+Las advertencias no impidieron instalar ni ejecutar las verificaciones.
+
+Comando: npm run lint
+Resultado: finalizó sin errores ni advertencias de ESLint.
+
+Comando: npm run build
+Resultado: compilación completada correctamente con Vite v8.3.4.
+32 módulos transformados.
+Archivos de producción generados en dist.
