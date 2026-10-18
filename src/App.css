@@ -82,7 +82,7 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.20);
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
 }
 
 .btn:hover {
@@ -194,7 +194,6 @@ body {
   justify-content: center;
   margin-top: 20px;
 }
-/* Fin estilos para componente Modal.jsx */
 
 /* Estilos adicionales Tutorial 11 */
 .btn-success {
@@ -269,3 +268,95 @@ body {
   margin-top: 6px;
 }
 /* Fin estilos tutorial 12 */
+
+.navigation,
+.filter-buttons,
+.task-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.navigation {
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.list-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.task-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+.task-title {
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+.task-edit {
+  flex: 1;
+  min-width: 0;
+}
+.task-edit input {
+  width: 100%;
+}
+.search-input {
+  max-width: 250px;
+}
+.badge {
+  color: white;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+.badge-pendiente {
+  background: #92400e;
+}
+.badge-completada {
+  background: #166534;
+}
+.empty-state {
+  text-align: center;
+  padding: 20px;
+  color: #475569;
+}
+.form-success {
+  color: #166534;
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.btn-secondary {
+  margin-left: 0;
+}
+.task-input {
+  min-width: 0;
+}
+@media (max-width: 650px) {
+  #root {
+    padding: 12px;
+  }
+  .app-container {
+    padding: 16px;
+  }
+  .task-item,
+  .task-content {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .task-edit,
+  .search-input {
+    width: 100%;
+    max-width: none;
+  }
+  .task-form {
+    flex-wrap: wrap;
+  }
+}
