@@ -14,7 +14,7 @@
 
 1. **Clonar el repositorio e instalar dependencias:**
    ```bash
-   git clone <URL_DE_TU_REPOSITORIO>
+   git clone https://github.com/benjamin-gonzalezg/Laboratorio-React-taskcampus
    cd taskcampus
    npm install
 
